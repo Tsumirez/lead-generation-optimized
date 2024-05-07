@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  height: 775px;
+  background: white url("./bg_dark.jpg");
+}
+
+section {
+  height: 800px;
+  border: 1px solid #333;
+  border-width: 0 1px 1px;
+}
+
+section > img {
+  width: 100px;
+  height: 100px;
+  background-color: greenyellow;
+  border: 1px solid #333;
+  animation: move 4s linear forwards;
+}
+
+@keyframes move {
+  0% {
+    margin-left: 0;
+  }
+
+  100% {
+    margin-left: 50%;
+  }
+}
