@@ -485,44 +485,71 @@ section {
     }
   }
 
+  // ------------------ CONTACT FORM STYLES -----------------------------------
   div:nth-of-type(2) {
     background-color: #fff;
     padding: 5rem 5rem 4.25rem;
     text-align: left;
 
-    input[type=submit]:active ~ input::before {
-      visibility: visible;
-      transition-timing-function: steps(1,start);
+    form  {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-auto-flow: dense;
+      align-items: center;
+    }
+
+    label {
+      color:red;
+      grid-column: 1;
+      opacity:0;
+      visibility: hidden;
+      transition: opacity 99999s steps(1,end);
     }
 
     input[type='text'] {
-      display: block;
+      display: inline-block;
       width: 100%;
       border:1px solid #999999;
       border-width:0 0 1px;
       padding: .875rem;
       margin-bottom: 1.5rem;
+      grid-column: 2;
 
-      &::before {
-        content:"test ";
-        visibility: hidden;
-        transition: visibility 2s steps(1, end);
+      &:is([required]:placeholder-shown, :invalid) + label {
+        visibility: visible;
+      }
+
+      &[minlength]:invalid + label::after{
+        content: "Za krótki telefon"
+      }
+
+      &[required]:placeholder-shown + label::after {
+        content:"Wypełnij to pole";
       }
 
       &:focus {
         outline:none;
-        // border:0px none;
-        // transition-timing-function: steps(1,start);
+
+        + label {
+          opacity:1;
+          transition-timing-function: steps(1,start);
+          visibility:hidden !important;
+        }
       }
 
       &::placeholder {
         color:#737373;
         font: 400 1rem "inter", sans-serif;
       }
+
+      &:is([required]:placeholder-shown, :invalid) ~ input[type=submit]:active {
+        pointer-events: none;
+      }
     }
 
     p {
       font: 300 .75rem/1.3 "Inter",sans-serif;
+      grid-column: 1/-1;
       color: #000;
 
       a {
@@ -532,7 +559,15 @@ section {
     }
 
     input[type="submit"] {
+      cursor: pointer;
+      grid-column: span 2;
       font: 600 1.125rem/3.875rem "Inter", sans-serif;
+    }
+
+    
+    form:has(input[type=submit]:active) label {
+      opacity:1;
+      transition-timing-function: steps(1,start);
     }
   }
 }

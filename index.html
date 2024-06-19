@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
+    <script src="form-validation.js" defer></script>
     <script>window.onload = (e) => {window.scrollTo(0,5634)}</script>
     <title>Document</title>
   </head>
@@ -201,11 +202,11 @@
         </div>
 
         <div>
-          <form action="">
+          <form action="" id="contact-form">
+            <input type="text" placeholder="Imię i nazwisko" required><label for=""></label>
+            <input type="text" placeholder="Telefon" minlength="3" required><label for=""></label>
+            <input type="text" placeholder="Email"><label for=""></label>
             <input type="submit" class="button" value="Przejdź do terminarza">
-            <input type="text" placeholder="Imię i nazwisko" required>
-            <input type="text" placeholder="Telefon" required>
-            <input type="text" placeholder="Email">
             <p id="pop">Administratorem danych jest: Spectrum Marketing, należące do Spectrum Kamil Hatko NIP: 6412371039 <a href="#terms">[Czytaj więcej..]</a></p>
           </form>
         </div>
